@@ -1,7 +1,6 @@
 package com.fellner.clientserver;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -62,20 +61,11 @@ public class MainActivity extends Activity {
     }
 
     public void setConnectionText(final String s){
-        new Thread() {
+        runOnUiThread(new Runnable() {
+            @Override
             public void run() {
-                try {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            connection.setText(s);
-                        }
-                    });
-                    Thread.sleep(300);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                connection.setText(s);
             }
-        }.start();
+        });
     }
 }

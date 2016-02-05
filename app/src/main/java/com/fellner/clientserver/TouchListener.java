@@ -2,12 +2,10 @@ package com.fellner.clientserver;
 
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 /**
- * Created by Yoshi on 28.02.2015.
+ * Created by Thomas Fellner on 28.02.2015.
  */
 
 public class TouchListener implements View.OnTouchListener {

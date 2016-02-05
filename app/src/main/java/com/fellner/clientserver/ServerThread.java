@@ -6,7 +6,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * Created by Yoshi on 28.02.2015.
+ * Created by Thomas Fellner on 28.02.2015.
  */
 public class ServerThread implements Runnable {
     static byte[] write;
