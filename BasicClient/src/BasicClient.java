@@ -1,9 +1,8 @@
 import java.io.IOException;
-import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * Basic Server to connect to the App.
+ * Basic Client to connect to the App.
  * Start the App first
  * 
  * @author Thomas Fellner
@@ -12,21 +11,26 @@ import java.net.Socket;
 
 public class ServerClient {
 	public static void main(String[] args) {
+		if(args.length != 1){
+			System.err.println("Please pass the IP adress of the server as an argument");
+			System.exit(1);
+		}
+		
 		try {
-			String ipAdress = "127.0.0.1"; // Write the IP of the phone that is running the app here
-			Socket s = new Socket(ipAdress, 12321);
+			Socket s = new Socket(args[0], 10101);
 			
 			int r = 0;
 			while(r != -1){
 				byte[] b = new byte[2];
 				r = s.getInputStream().read(b);
 
-				System.out.println("Y:"+b[0]+"  X:"+b[1]);
+				System.out.println("Speed: "+b[0]+",  Direction: "+b[1]);
 			}
-			System.out.println("Connection Lost");
+			System.out.println("Connection lost");
 			s.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.err.println("An error has occured please check if the IP adress is right and the port (10101) is availible\n"
+						+ "Check if App already has a running connection. App must be started first");
 		}
 	}
 }

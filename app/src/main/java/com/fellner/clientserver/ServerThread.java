@@ -23,7 +23,7 @@ public class ServerThread implements Runnable {
         try {
             ma.findViewById(R.id.circle).setOnTouchListener(ma.getListener());
             ma.findViewById(R.id.view).setOnTouchListener(ma.getListener());
-            ServerSocket serverSocket = new ServerSocket(12321);
+            ServerSocket serverSocket = new ServerSocket(10101);
             ma.setConnectionText("Waiting for Connection...");
             Socket clientSocket = serverSocket.accept();
             ma.setConnectionText("Connected");
@@ -31,9 +31,7 @@ public class ServerThread implements Runnable {
                 clientSocket.getOutputStream().write(write);
                 Thread.sleep(200);
             }
-        }catch (IOException e){
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        }catch (IOException | InterruptedException e){
             e.printStackTrace();
         }
     }
